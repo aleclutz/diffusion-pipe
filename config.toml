@@ -1,0 +1,56 @@
+# Output path for training runs. Each training run makes a new directory in here.
+output_dir = '/home/aleg/workspace/output/'
+dataset = 'dataset.toml'
+
+epochs = 1000
+micro_batch_size_per_gpu = 4
+pipeline_stages = 1
+gradient_accumulation_steps = 1
+gradient_clipping = 1.0
+warmup_steps = 25
+blocks_to_swap = 20
+
+
+eval_every_n_epochs = 1
+eval_before_first_step = true
+eval_micro_batch_size_per_gpu = 1
+eval_gradient_accumulation_steps = 1
+
+
+save_every_n_epochs = 100
+#checkpoint_every_n_epochs = 1
+checkpoint_every_n_minutes = 15
+activation_checkpointing = true
+partition_method = 'parameters'
+
+
+
+save_dtype = 'bfloat16'
+caching_batch_size = 1
+steps_per_print = 1
+video_clip_mode = 'single_beginning'
+
+
+[model]
+type = 'hidream'
+diffusers_path = '/home/aleg/workspace/models/hidream-full'
+llama3_path = '/home/aleg/workspace/models/llama-3.1'
+llama3_4bit = true
+dtype = 'bfloat16'
+transformer_dtype = 'nf4'
+max_llama3_sequence_length = 128
+flux_shift = true
+
+
+[adapter]
+type = 'lora'
+rank = 32
+dtype = 'bfloat16'
+#init_from_existing = '/mnt/d/Diffusion/output/20250418_19-01-50/epoch28'
+
+[optimizer]
+type = 'adamw_optimi'
+lr = 4e-4
+betas = [0.9, 0.99]
+weight_decay = 0.01
+eps = 1e-8

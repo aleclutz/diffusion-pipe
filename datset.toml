@@ -1,0 +1,15 @@
+# 20 epochs with batch_size 8 and 4e-4 - flux_shift = true
+resolutions = [1024]
+
+#enable_ar_bucket = true
+#ar_buckets = [[512, 512], [584, 440], [440, 584], [624, 416], [416, 624]]
+
+
+# 5 epochs with batch_size 4 and 2e-4
+# resolutions = [1024]
+
+enable_ar_bucket = true
+ar_buckets = [[1024, 1024], [1168, 880], [880, 1168], [832, 1248], [1248, 832]]
+
+[[directory]]
+path = 'home/aleg/workspace/datasets/AL_SET_CROPED'
